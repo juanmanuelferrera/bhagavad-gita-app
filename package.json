@@ -7,6 +7,7 @@
     "start": "electron .",
     "build": "electron-builder --win",
     "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
     "build:all": "electron-builder -mwl"
   },
   "repository": {
@@ -30,6 +31,10 @@
     "mac": {
       "target": ["dmg", "zip"],
       "category": "public.app-category.education"
+    },
+    "linux": {
+      "target": ["AppImage", "deb", "rpm"],
+      "category": "Education"
     },
     "win": {
       "target": ["nsis", "portable"],
