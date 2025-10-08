@@ -23,7 +23,8 @@
   "homepage": "https://github.com/juanmanuelferrera/bhagavad-gita-app#readme",
   "devDependencies": {
     "electron": "^28.0.0",
-    "electron-builder": "^24.9.1"
+    "electron-builder": "^24.9.1",
+    "electron-icon-builder": "^2.0.1"
   },
   "build": {
     "appId": "com.bhagavadgita.app",
@@ -33,15 +34,27 @@
       "index.html"
     ],
     "mac": {
-      "target": ["dmg", "zip"],
-      "category": "public.app-category.education"
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.education",
+      "icon": "build/icon.icns"
     },
     "linux": {
-      "target": ["AppImage", "deb", "rpm"],
-      "category": "Education"
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "category": "Education",
+      "icon": "build/icons"
     },
     "win": {
-      "target": ["nsis", "portable"],
+      "target": [
+        "nsis",
+        "portable"
+      ],
       "icon": "build/icon.ico"
     },
     "nsis": {
