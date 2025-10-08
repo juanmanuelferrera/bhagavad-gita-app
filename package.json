@@ -6,6 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
     "build:all": "electron-builder -mwl"
   },
   "repository": {
@@ -26,6 +27,10 @@
       "electron.js",
       "index.html"
     ],
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.education"
+    },
     "win": {
       "target": ["nsis", "portable"],
       "icon": "build/icon.ico"
