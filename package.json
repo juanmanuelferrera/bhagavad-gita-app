@@ -15,7 +15,10 @@
     "url": "git+https://github.com/juanmanuelferrera/bhagavad-gita-app.git"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Juan Manuel Ferrera",
+    "email": "juanmanuelferrera@example.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/juanmanuelferrera/bhagavad-gita-app/issues"
