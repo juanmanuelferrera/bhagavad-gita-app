@@ -15,7 +15,8 @@
       "Bash(npx cap init:*)",
       "Bash(npx cap add:*)",
       "Bash(npx cap sync:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(ffmpeg:*)"
     ],
     "deny": [],
     "ask": []
