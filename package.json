@@ -21,6 +21,10 @@
     "url": "https://github.com/juanmanuelferrera/bhagavad-gita-app/issues"
   },
   "homepage": "https://github.com/juanmanuelferrera/bhagavad-gita-app#readme",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
   "build": {
     "appId": "com.bhagavadgita.app",
     "productName": "Bhagavad-gita",
