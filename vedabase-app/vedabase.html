@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedabase - Complete Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sanskrit+Text:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-sanskrit {
+            font-family: 'Sanskrit Text', serif;
+        }
+        .tab-button {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            background: white;
+        }
+        .tab-button:hover {
+            background-color: #fff7ed;
+            color: #ea580c;
+        }
+        .tab-button.active {
+            border-bottom-color: #ea580c;
+            color: #ea580c;
+            font-weight: 600;
+        }
+        #content-frame {
+            width: 100%;
+            height: calc(100vh - 160px);
+            border: none;
+            background: white;
+        }
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ea580c;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 100px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-amber-50 to-orange-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-3xl font-sanskrit text-orange-600 text-center">
+                Vedabase - Complete Collection
+            </h1>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 sticky top-[72px] z-40">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-2">
+                <button class="tab-button active" data-src="vedabase-source/bg.html">
+                    Bhagavad-gītā
+                </button>
+                <button class="tab-button" data-src="vedabase-source/sb.html">
+                    Śrīmad Bhāgavatam
+                </button>
+                <button class="tab-button" data-src="vedabase-source/cc.html">
+                    Caitanya Caritāmṛta
+                </button>
+                <button class="tab-button" data-src="vedabase-source/kb.html">
+                    Kṛṣṇa Book
+                </button>
+                <button class="tab-button" data-src="vedabase-source/other.html">
+                    Other Books
+                </button>
+                <button class="tab-button" data-src="vedabase-source/lec1.html">
+                    Lectures 1
+                </button>
+                <button class="tab-button" data-src="vedabase-source/lec2.html">
+                    Lectures 2
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Content Frame - loads ONE page at a time to save memory -->
+    <main class="container mx-auto">
+        <iframe id="content-frame" src="vedabase-source/bg.html" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+    </main>
+
+    <script>
+        // Memory-efficient: Only ONE iframe, switches content on demand
+        const contentFrame = document.getElementById('content-frame');
+        const loading = document.getElementById('loading');
+        const buttons = document.querySelectorAll('.tab-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const src = this.getAttribute('data-src');
+
+                // Remove active class from all buttons
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Show loading
+                loading.classList.remove('hidden');
+                contentFrame.classList.add('hidden');
+
+                // Load new content (browser automatically unloads previous iframe content)
+                contentFrame.onload = function() {
+                    loading.classList.add('hidden');
+                    contentFrame.classList.remove('hidden');
+                };
+
+                // Change iframe source - this unloads previous content from memory
+                contentFrame.src = src;
+            });
+        });
+
+        // Initial load handler
+        window.addEventListener('load', () => {
+            contentFrame.onload = () => {
+                loading.classList.add('hidden');
+                contentFrame.classList.remove('hidden');
+            };
+        });
+    </script>
+</body>
+</html>
